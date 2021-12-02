@@ -2,6 +2,11 @@ import logging
 
 
 def parse_input(filename):
+    """
+    parses input txt file to list of int
+    :param filename:
+    :return:
+    """
     input_list: list[int] = []
     with open(filename, "r") as i_f:
         for line in i_f:
@@ -13,6 +18,11 @@ def parse_input(filename):
 
 
 def create_sliding_window(in_list: list[int]) -> list[int]:
+    """
+    creates sliding windows from input list, reduces list length by 2 ( first 2 entries are not computable)
+    :param in_list:
+    :return:
+    """
     windows = []
     for i in range(len(in_list) - 2):
         windows.append(sum(in_list[i:i + 3]))
@@ -34,6 +44,10 @@ def solve_1_1(input_file="input_1_1.txt") -> int:
 
 
 def solve_1_2(input_file="input_1_2.txt"):
+    """
+    solves day 1 ex 2
+    :return:
+    """
     windows = create_sliding_window(parse_input(input_file))
     result = 0
     for ii in range(len(windows)):

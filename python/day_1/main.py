@@ -1,10 +1,12 @@
 import logging
+from typing import Union
+from os import PathLike
 
 
-def parse_input(filename):
+def parse_input(filename: Union[str, bytes, PathLike[str]]) -> list[int]:
     """
     parses input txt file to list of int
-    :param filename:
+    :param filename: str or file other way to open a file with the open statement
     :return:
     """
     input_list: list[int] = []
@@ -43,7 +45,7 @@ def solve_1_1(input_file="input_1_1.txt") -> int:
     return result
 
 
-def solve_1_2(input_file="input_1_2.txt"):
+def solve_1_2(input_file="input_1_2.txt") -> int:
     """
     solves day 1 ex 2
     :return:

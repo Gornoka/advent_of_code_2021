@@ -1,6 +1,11 @@
+"""
+day 1 exercise
+"""
 import logging
 from typing import Union
 from os import PathLike
+
+logger = logging.getLogger(__name__)
 
 
 def parse_input(filename: Union[str, bytes, PathLike[str]]) -> list[int]:
@@ -10,12 +15,12 @@ def parse_input(filename: Union[str, bytes, PathLike[str]]) -> list[int]:
     :return:
     """
     input_list: list[int] = []
-    with open(filename, "r") as i_f:
+    with open(filename, "r", encoding="ascii") as i_f:
         for line in i_f:
             try:
                 input_list.append(int(line))
             except ValueError:
-                logging.error(f"could not parse line as int, line {line}")
+                logger.error("could not parse line as int, line %s", line)
     return input_list
 
 
@@ -38,9 +43,10 @@ def solve_1_1(input_file="input_1_1.txt") -> int:
     """
     input_list = parse_input(input_file)
     result = 0
-    for ii in range(len(input_list)):
-        if ii != 0:
-            if input_list[ii] > input_list[ii - 1]:
+
+    for i in range(len(input_list)):
+        if i != 0:
+            if input_list[i] > input_list[i - 1]:
                 result += 1
     return result
 
@@ -52,9 +58,9 @@ def solve_1_2(input_file="input_1_2.txt") -> int:
     """
     windows = create_sliding_window(parse_input(input_file))
     result = 0
-    for ii in range(len(windows)):
-        if ii != 0:
-            if windows[ii] > windows[ii - 1]:
+    for i in range(len(windows)):
+        if i != 0:
+            if windows[i] > windows[i - 1]:
                 result += 1
     return result
 

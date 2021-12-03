@@ -1,9 +1,13 @@
+"""
+utility module for the submarine of day 2 and maybe beyond
+"""
 import logging
 import random
 import string
-import time
 from typing import Union
 from os import PathLike
+
+logger = logging.getLogger(__name__)
 
 
 class MisunderstoodSubmarine:
@@ -18,7 +22,9 @@ class MisunderstoodSubmarine:
         self.forward_location = initial_forward
 
         if name is None:
-            self.name = f"{''.join([random.choice(string.ascii_uppercase) for _ in range(3)])}-{random.randint(0, 1337)}"
+            name_start = ''.join([random.choice(string.ascii_uppercase) for _ in range(3)])
+            name_number = random.randint(0, 1337)
+            self.name = f"{name_start}-{name_number}"
 
     @property
     def distance(self) -> int:
@@ -77,22 +83,25 @@ class MisunderstoodSubmarine:
         operations = {"forward": self.forward,
                       "up": self.up,
                       "down": self.down}
-        with open(input_file, "r") as i_f:
+        with open(input_file, "r", encoding="utf-8") as i_f:
             for line in i_f:
                 line: str
                 direction, distance = line.split(" ")
                 try:
                     operations[direction](int(distance))
                 except KeyError:
-                    logging.error(f"direction not implemented {direction}")
-        logging.info(f"location {self.forward_location} {self.depth}")
+                    logger.error("direction not implemented %s", direction)
+        logger.info("location %s %s", self.forward_location, self.depth)
 
 
 class Submarine(MisunderstoodSubmarine):
+    """
+    Submarine with fixed input processing
+    """
 
     def __init__(self, initial_depth: int = 0, initial_forward: int = 0, initial_aim: int = 0):
         """
-        better understand sub
+        better understood submarine
         :param initial_depth:
         :param initial_forward:
         :param initial_aim:

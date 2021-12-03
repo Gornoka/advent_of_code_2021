@@ -1,6 +1,8 @@
 python:
-- '**.py'
-python:
-- **.py
-python:
-- "**.py"
+- '**/*.py'
+
+#python_blank:
+#- **/*.py
+
+#python_quote:
+#- "**/*.py"

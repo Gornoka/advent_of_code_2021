@@ -20,4 +20,4 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        pylint   --fail-under=120 --max-line-length python/*
+        pylint   --fail-under=8 --max-line-length=120 python/*

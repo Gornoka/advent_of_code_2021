@@ -1,8 +1,8 @@
 python_apostroph:
 - '**/*.py'
 
-#python_blank:
-#- **/*.py
+python_blank:
+- **/*.py
 
 python_quote:
 - "**/*.py"

@@ -1,8 +1,8 @@
-python:
-- '**/*.py'
-
 #python:
-#- **/*.py
+#- '**/*.py'
+
+python:
+- **/*.py
 
 # python:
 # - "**/*.py"

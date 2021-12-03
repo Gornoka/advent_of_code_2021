@@ -3,7 +3,7 @@ name: Pylint
 on: [push]
 
 jobs:
-  build:
+  linter:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -21,3 +21,4 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         pylint   --fail-under=8 --max-line-length=120 python/*
+
